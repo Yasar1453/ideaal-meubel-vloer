@@ -1,7 +1,7 @@
 # Beheerportaal
 
-Website: https://ideaal-meubel-vloer.netlify.app
-Portaal: https://ideaal-meubel-vloer.netlify.app/beheer/
+Website: https://ideaalmeubel.nl
+Portaal: https://ideaalmeubel.nl/beheer/
 
 - **Bestellingen:** elke aanvraag van de website komt hier binnen. Zet de status op Nieuw, In behandeling of Afgerond.
 - **Producten:** vloer toevoegen (foto, naam, beschrijving, prijs), bewerken of verwijderen. De website past zich direct aan: productpagina, collectie, sitemap en de info voor Google en AI.
@@ -18,7 +18,12 @@ Portaal: https://ideaal-meubel-vloer.netlify.app/beheer/
 
 ## Eigen domein
 
-In Netlify: Domain management > Add a domain (bijv. ideaalmeubel.nl) en de DNS bij de registrar naar Netlify laten wijzen. Canonical-links en sitemap nemen het nieuwe domein automatisch over. Pas daarna `website` in `data/winkel.json` aan (voor de statische kopie).
+Gekoppeld op 31-10-2026. Domein staat bij Mijndomein (account 647877), DNS daar:
+- A `ideaalmeubel.nl` -> `75.2.60.5` (Netlify)
+- CNAME `www.ideaalmeubel.nl` -> `ideaal-meubel-vloer.netlify.app.`
+- AAAA `*.ideaalmeubel.nl` en TXT (SPF) ongewijzigd laten.
+Https-certificaat regelt Netlify zelf. Netlify-omgevingsvariabele `SITE_URL=https://ideaalmeubel.nl`.
+Er is geen mailserver (geen MX): info@ideaalmeubel.nl werkt nog niet.
 
 ## Nog niet
 

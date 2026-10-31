@@ -52,4 +52,4 @@ Allow: /
 Disallow: /api/
 Disallow: /beheer/
 
-Sitemap: https://ideaal-meubel-vloer.netlify.app/sitemap.xml
+Sitemap: https://ideaalmeubel.nl/sitemap.xml

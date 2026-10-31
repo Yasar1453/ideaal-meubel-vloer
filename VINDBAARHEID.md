@@ -12,7 +12,7 @@ Wat op de site al geregeld is en wat Ideaal zelf moet doen. Doel: gevonden worde
 
 ## Nodig van Ideaal (belangrijkste eerst)
 
-1. **Eigen domein.** ideaalmeubel.nl wijst nu naar een Shopify-winkel die niet actief is ("Store unavailable"). Na de verhuizing het domein in Netlify toevoegen (zie BEHEER.md).
+1. **Eigen domein.** ideaalmeubel.nl is op 31-10-2026 gekoppeld (zie BEHEER.md). Volgende stap: het domein toevoegen in Google Search Console en de sitemap insturen.
 2. ~~Adres en openingstijden~~ Gedaan: Jan Evertsenstraat 10H, 1056 EC Amsterdam, tijden van Google Maps (31-10-2026). Staan op de site en in de gegevens voor Google en AI.
 3. **Echte prijzen, producten en e-mailadres** (nu voorbeeldwaarden; aanpassen in het beheerportaal). Let op: ideaalmeubel.nl heeft geen mailserver, dus info@ideaalmeubel.nl werkt nu niet.
 
