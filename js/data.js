@@ -57,7 +57,7 @@ window.IDEAAL = {
             "dicht": "17:00"
         }
     ],
-    "snijverlies": 0.05,
+    "snijverlies": 0.1,
     "plintPrijs": 4.5,
     "ondervloer": [
         {

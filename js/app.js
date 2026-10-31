@@ -9,7 +9,7 @@
   const byId = (id) => D.laminaat.find((p) => p.id === id);
   const img = (p) => R + (p.foto || 'img/laminaat/' + p.id + '.jpg');
   const productUrl = (p) => R + 'laminaat/' + p.id + '.html';
-  const snijverlies = (p) => (p.type === 'Visgraat' ? 0.10 : D.snijverlies);
+  const snijverlies = (p) => (p.type === 'Visgraat' ? 0.15 : D.snijverlies);
   const esc = (v) => String(v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   // Leest "5,2", "5.2" of "1.250,5" als getal; ongeldig of niet eindig wordt NaN.
   const num = (v) => {
