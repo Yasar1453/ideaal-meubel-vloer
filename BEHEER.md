@@ -1,20 +1,24 @@
 # Beheerportaal
 
-Adres: `<website>/beheer/` (bijv. https://www.ideaalmeubel.nl/beheer/).
+Website: https://ideaal-meubel-vloer.netlify.app
+Portaal: https://ideaal-meubel-vloer.netlify.app/beheer/
 
-- **Bestellingen:** elke aanvraag van de website komt hier binnen (en ook per e-mail). Zet de status op Nieuw, In behandeling of Afgerond.
-- **Producten:** vloer toevoegen (foto, naam, beschrijving, prijs), bewerken of verwijderen. De website wordt direct bijgewerkt: productpagina, collectie, sitemap en de info voor Google en AI.
+- **Bestellingen:** elke aanvraag van de website komt hier binnen. Zet de status op Nieuw, In behandeling of Afgerond.
+- **Producten:** vloer toevoegen (foto, naam, beschrijving, prijs), bewerken of verwijderen. De website past zich direct aan: productpagina, collectie, sitemap en de info voor Google en AI.
+- **Account:** wachtwoord wijzigen.
 
-## Online zetten
+## Hoe het werkt
 
-Het portaal en het opslaan van bestellingen hebben **webhosting met PHP** nodig (8.0 of nieuwer, met GD voor foto's). GitHub Pages kan geen PHP draaien: daar werkt alleen de website, bestellingen gaan dan via de mail van de klant.
+- Hosting: Netlify (project `ideaal-meubel-vloer`). Producten, foto's, bestellingen en het wachtwoord staan in Netlify Blobs, niet in GitHub.
+- `netlify/functions/pagina.mjs` maakt de pagina's met de actuele producten (via `lib/bouw.mjs`) en het CDN bewaart ze tot er iets verandert.
+- `data/winkel.json` is alleen de startversie. Zodra in het portaal iets is opgeslagen, is Netlify de bron.
+- Nieuwe versie van de code online zetten: `netlify deploy --build --prod`. Producten en bestellingen blijven daarbij staan.
+- Artikelen (content/kennisbank) wijzigen: bestand aanpassen en opnieuw deployen.
 
-1. Upload alle bestanden naar de hosting.
-2. Open direct daarna `/beheer/` en kies een wachtwoord. Wie als eerste het portaal opent, kiest het wachtwoord. Doe dit dus meteen.
-3. Pas `website` in `data/winkel.json` aan naar het eigen domein en open het portaal; sla een product één keer op (of draai `php bouw.php`).
-4. Pas `ONTVANGER` in `bestelling.php` aan naar het echte e-mailadres.
+## Eigen domein
 
-## Belangrijk
+In Netlify: Domain management > Add a domain (bijv. ideaalmeubel.nl) en de DNS bij de registrar naar Netlify laten wijzen. Canonical-links en sitemap nemen het nieuwe domein automatisch over. Pas daarna `website` in `data/winkel.json` aan (voor de statische kopie).
 
-- Na de livegang is de **server de bron** van de producten. Overschrijf `data/winkel.json`, `js/data.js`, `laminaat/` en `img/laminaat/` dus niet met een oude kopie bij een volgende upload.
-- Bestellingen en het wachtwoord staan in `prive/`. Die map wordt nooit naar GitHub gestuurd. Wachtwoord vergeten: verwijder `prive/account.php` via de hosting en kies een nieuw wachtwoord.
+## Nog niet
+
+- Geen e-mailmelding bij een nieuwe bestelling: kijk in het portaal (de teller bij Bestellingen toont nieuwe aanvragen).

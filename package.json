@@ -1,0 +1,12 @@
+{
+  "name": "ideaal-meubel-vloer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "bouw": "node lib/bouw.mjs"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0",
+    "@netlify/functions": "^3.0.0"
+  }
+}

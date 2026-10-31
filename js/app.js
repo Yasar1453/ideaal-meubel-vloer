@@ -7,7 +7,7 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const byId = (id) => D.laminaat.find((p) => p.id === id);
-  const img = (p) => R + 'img/laminaat/' + p.id + '.jpg';
+  const img = (p) => R + (p.foto || 'img/laminaat/' + p.id + '.jpg');
   const productUrl = (p) => R + 'laminaat/' + p.id + '.html';
   const snijverlies = (p) => (p.type === 'Visgraat' ? 0.10 : D.snijverlies);
   const esc = (v) => String(v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -325,7 +325,7 @@
       let ok = false;
       try {
         const ctrl = new AbortController(); setTimeout(() => ctrl.abort(), 15000);
-        const r = await fetch('bestelling.php', { signal: ctrl.signal, method: 'POST', headers: { 'Content-Type': 'application/json' },
+        const r = await fetch('/api/bestelling', { signal: ctrl.signal, method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             naam: f.get('naam'), email: f.get('email'), telefoon: f.get('telefoon'),
             adres: `${f.get('adres')}, ${f.get('postcode')} ${f.get('plaats')}`,

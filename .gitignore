@@ -1,6 +1,5 @@
-prive/*.php
-prive/*.lock
-prive/*.tmp
-data/*.tmp
+node_modules/
+.netlify/
 .playwright-mcp/
 .DS_Store
+dist/

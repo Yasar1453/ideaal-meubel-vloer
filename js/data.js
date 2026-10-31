@@ -1,4 +1,4 @@
-/* Gemaakt door bouw.php uit data/winkel.json. Niet met de hand aanpassen: gebruik het beheerportaal (beheer/). */
+/* Gemaakt uit de winkelgegevens. Niet met de hand aanpassen: gebruik het beheerportaal (beheer/). */
 window.IDEAAL = {
     "naam": "Ideaal Meubel & Vloer",
     "telefoon": "020-7526672",

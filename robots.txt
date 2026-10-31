@@ -49,7 +49,7 @@ Disallow: /beheer/
 
 User-agent: *
 Allow: /
-Disallow: /bestelling.php
+Disallow: /api/
 Disallow: /beheer/
 
-Sitemap: https://yasar1453.github.io/ideaal-meubel-vloer/sitemap.xml
+Sitemap: https://ideaal-meubel-vloer.netlify.app/sitemap.xml

@@ -123,3 +123,5 @@ label small { font-weight: 400; color: var(--muted); }
 .extra { display: grid; grid-template-columns: auto 1fr; gap: .35rem 1rem; margin-top: 1rem; font-size: .92rem; }
 .extra dt { color: var(--muted); }
 .extra dd { margin: 0; }
+.laden { text-align: center; color: var(--muted); padding: 20vh 1rem; }
+.product-form.smal { max-width: 460px; }

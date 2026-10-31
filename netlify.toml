@@ -1,0 +1,16 @@
+[build]
+  publish = "dist"
+  command = "node lib/bouw.mjs && rm -rf dist && mkdir dist && cp -R *.html *.xml *.txt css js img laminaat kennisbank beheer dist/"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  included_files = ["content/**", "index.html", "laminaat.html", "bestellen.html", "js/app.js", "css/style.css", "data/winkel.json"]
+
+[[headers]]
+  for = "/beheer/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "same-origin"
+    X-Robots-Tag = "noindex, nofollow"
