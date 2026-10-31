@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=1">
+<title>Uw bestelling | Ideaal Meubel &amp; Vloer</title>
+<meta name="robots" content="noindex">
+</head>
+<body data-page="bestellen">
+<div id="site-header"></div>
+<section class="page-head"><div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a> / <a href="laminaat.html">Laminaat</a> / Bestelling</div>
+  <h1>Uw bestelling</h1>
+  <p class="lead">Controleer uw keuze en vul uw gegevens in. U betaalt nu nog niets: wij nemen contact op om de bestelling te bevestigen.</p>
+</div></section>
+<section class="section" style="padding-top:4rem"><div class="wrap" id="order-wrap">
+  <form class="order" id="order-form">
+    <div>
+      <div id="lines"></div>
+      <div class="form-block">
+        <h3>Afwerking</h3>
+        <div class="row">
+          <div class="field"><label for="ondervloer">Ondervloer</label><select id="ondervloer" name="ondervloer"></select></div>
+          <div class="field"><label for="plinten">Plinten (strekkende meter)</label><input id="plinten" name="plinten" inputmode="decimal" placeholder="0"></div>
+        </div>
+        <label class="choice"><input type="radio" name="leggen" value="ja" checked><div><strong>Laten leggen door Ideaal</strong><span>Wij sturen u een offerte voor het leggen, inclusief afwerking.</span></div></label>
+        <label class="choice"><input type="radio" name="leggen" value="nee"><div><strong>Zelf leggen</strong><span>U ontvangt alleen de materialen.</span></div></label>
+      </div>
+      <div class="form-block">
+        <h3>Levering</h3>
+        <label class="choice"><input type="radio" name="levering" value="bezorgen" checked><div><strong>Bezorgen</strong><span>Wij bellen u voor een bezorgmoment.</span></div></label>
+        <label class="choice"><input type="radio" name="levering" value="ophalen"><div><strong>Ophalen in de winkel</strong><span>U hoort van ons wanneer alles klaarstaat.</span></div></label>
+      </div>
+      <div class="form-block">
+        <h3>Uw gegevens</h3>
+        <div class="row">
+          <div class="field"><label for="naam">Naam</label><input id="naam" name="naam" required autocomplete="name"></div>
+          <div class="field"><label for="telefoon">Telefoon</label><input id="telefoon" name="telefoon" type="tel" required autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="adres">Straat en huisnummer</label><input id="adres" name="adres" required autocomplete="street-address"></div>
+        <div class="row">
+          <div class="field"><label for="postcode">Postcode</label><input id="postcode" name="postcode" required autocomplete="postal-code"></div>
+          <div class="field"><label for="plaats">Plaats</label><input id="plaats" name="plaats" required autocomplete="address-level2"></div>
+        </div>
+        <div class="field"><label for="opmerking">Opmerking (optioneel)</label><textarea id="opmerking" name="opmerking" rows="4" placeholder="Bijvoorbeeld: vloerverwarming, gewenste leverdatum, trap meenemen"></textarea></div>
+      </div>
+    </div>
+    <aside class="summary">
+      <h3>Overzicht</h3>
+      <div id="sum"></div>
+      <button class="btn btn-brass" id="send" type="submit" style="width:100%;justify-content:center;margin-top:1.4rem">Bestelaanvraag versturen</button>
+      <p class="note">Geen online betaling. Wij bevestigen prijs, levering en betaling persoonlijk.</p>
+    </aside>
+  </form>
+</div></section>
+<div id="site-footer"></div>
+<script src="js/data.js?v=1"></script>
+<script src="js/app.js?v=1"></script>
+</body>
+</html>
