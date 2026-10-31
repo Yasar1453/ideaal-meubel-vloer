@@ -3,7 +3,8 @@
   const app = document.getElementById('app');
   const TYPES = ['Plank', 'Visgraat', 'Tegeldessin'];
   const TINTEN = ['Licht', 'Naturel', 'Grijs', 'Donker'];
-  const KLASSEN = ['AC3', 'AC4', 'AC5'];
+  const KLASSEN = ['AC3', 'AC4', 'AC5', 'Klasse 23', 'Klasse 31', 'Klasse 32', 'Klasse 33', 'Klasse 34'];
+  const SOORTEN = ['Laminaat', 'PVC'];
   const STATUS = { nieuw: 'Nieuw', bezig: 'In behandeling', klaar: 'Afgerond' };
   const h = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   const eur = (n) => '€ ' + Number(n).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
@@ -153,7 +154,7 @@
     kader('producten', `<div class="kop"><h1>Producten <small>${lijst.length}</small></h1><a class="knop" href="#product">+ Nieuw product</a></div>
       <ul class="producten">${lijst.map((p) => `<li data-id="${h(p.id)}">
         <img src="${h(foto(p))}" alt="" width="64" height="64" loading="lazy">
-        <div class="pr-info"><strong>${h(p.naam)}</strong><span>${h(p.type)} · ${h(p.dikte)} mm · ${h(p.klasse)}</span></div>
+        <div class="pr-info"><strong>${h(p.naam)}</strong><span>${h(p.soort || 'Laminaat')} · ${h(p.type)} · ${h(p.dikte)} mm · ${h(p.klasse)}</span></div>
         <div class="pr-prijs">${eur(p.prijs)}<span>per m²</span></div>
         <div class="pr-acties"><a class="knop klein licht" href="#product/${encodeURIComponent(p.id)}">Bewerken</a><button class="link rood">Verwijderen</button></div>
       </li>`).join('')}</ul>`);
@@ -180,7 +181,7 @@
   async function toonProduct(id) {
     if (!cache.producten) cache.producten = (await api('producten')).producten;
     const bestaand = cache.producten.find((x) => x.id === id);
-    const p = bestaand || { id: '', naam: '', lijn: '', type: 'Plank', tint: 'Naturel', dikte: 8, klasse: 'AC4', formaat: '', pak: '', prijs: '', water: false, tekst: '' };
+    const p = bestaand || { id: '', naam: '', soort: 'Laminaat', lijn: '', type: 'Plank', tint: 'Naturel', dikte: 8, klasse: 'AC4', formaat: '', pak: '', prijs: '', water: false, tekst: '' };
     const opties = (lijst, w) => lijst.map((o) => `<option${o === w ? ' selected' : ''}>${o}</option>`).join('');
     kader('producten', `<div class="kop"><h1>${bestaand ? 'Product bewerken' : 'Nieuw product'}</h1><a class="link" href="#producten">Terug naar producten</a></div>
       <p class="fout" role="alert" hidden></p>
@@ -199,15 +200,18 @@
             <label>m² per pak <input name="pak" value="${h(komma(p.pak))}" inputmode="decimal" required placeholder="2,13"></label>
           </div>
           <div class="rij">
-            <label>Soort <select name="type">${opties(TYPES, p.type)}</select></label>
+            <label>Soort vloer <select name="soort">${opties(SOORTEN, p.soort || 'Laminaat')}</select></label>
+            <label>Legpatroon <select name="type">${opties(TYPES, p.type)}</select></label>
+          </div>
+          <div class="rij">
             <label>Kleur <select name="tint">${opties(TINTEN, p.tint)}</select></label>
-          </div>
-          <div class="rij">
             <label>Dikte (mm) <input name="dikte" value="${h(p.dikte)}" inputmode="numeric" required></label>
-            <label>Slijtklasse <select name="klasse">${opties(KLASSEN, p.klasse)}</select></label>
           </div>
           <div class="rij">
+            <label>Slijtklasse <select name="klasse">${opties(KLASSEN, p.klasse)}</select></label>
             <label>Formaat plank <input name="formaat" value="${h(p.formaat === '-' ? '' : p.formaat)}" maxlength="40" placeholder="bijv. 1380 × 193 mm"></label>
+          </div>
+          <div class="rij">
             <label>Collectie <input name="lijn" value="${h(p.lijn)}" maxlength="30" placeholder="bijv. Classic"></label>
           </div>
           <label class="vink"><input type="checkbox" name="water"${p.water ? ' checked' : ''}> Waterbestendig</label>
@@ -230,7 +234,7 @@
       knop.disabled = true; knop.textContent = 'Opslaan…'; fo.hidden = true;
       try {
         const r = await api('producten', { method: 'POST', body: {
-          id: p.id, naam: f.naam.value, tekst: f.tekst.value, prijs: f.prijs.value, pak: f.pak.value, type: f.type.value, tint: f.tint.value,
+          id: p.id, naam: f.naam.value, tekst: f.tekst.value, prijs: f.prijs.value, pak: f.pak.value, soort: f.soort.value, type: f.type.value, tint: f.tint.value,
           dikte: f.dikte.value, klasse: f.klasse.value, formaat: f.formaat.value, lijn: f.lijn.value, water: f.water.checked, foto: fotoData } });
         cache.producten = null;
         melding = `${r.product.naam} is opgeslagen en staat op de website.`;

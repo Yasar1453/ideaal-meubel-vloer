@@ -1,14 +1,21 @@
 # Ideaal Meubel & Vloer
 
-> Ideaal Meubel & Vloer is een woonwinkel in Amsterdam voor vloeren (laminaat), meubels, trapbekleding en raamdecoratie. Al 20 jaar experts in wonen, alles onder één dak. Klanten kunnen laminaat online uitzoeken, het aantal pakken laten berekenen en een bestelaanvraag versturen; betaling en levering worden daarna persoonlijk afgestemd.
+> Ideaal Meubel & Vloer is een woonwinkel in Amsterdam voor vloeren (laminaat), meubels, trapbekleding en raamdecoratie. Al 25 jaar experts in wonen, alles onder één dak. Klanten kunnen laminaat en PVC online uitzoeken, het aantal pakken laten berekenen en een bestelaanvraag versturen; betaling en levering worden daarna persoonlijk afgestemd.
 
 - Adres: Jan Evertsenstraat 10H, 1056 EC Amsterdam
 - Telefoon: 020-7526672
 - Openingstijden: Maandag 10:00-18:00, Dinsdag 09:00-18:00, Woensdag 09:00-18:00, Donderdag 09:00-20:00, Vrijdag 09:00-18:00, Zaterdag 09:00-18:00, Zondag 12:00-17:00
 - Instagram: https://www.instagram.com/ideaalmeubel/
 - Website: https://ideaal-meubel-vloer.netlify.app/
+- Google-reviews: 5,0 uit 5 op basis van 59 reviews (https://www.google.com/maps?cid=10905732128968996469)
 
-## Laminaat collectie
+## Vloeren
+
+- [PVC vloeren](https://ideaal-meubel-vloer.netlify.app/pvc-vloeren.html): PVC vloeren bij Ideaal Meubel & Vloer in Amsterdam: stil, warm en waterbestendig. Bekijk de collectie en bereken direct hoeveel pakken u nodig hebt.
+- [Laminaat vloeren](https://ideaal-meubel-vloer.netlify.app/laminaat.html): Laminaat vloeren bij Ideaal Meubel & Vloer in Amsterdam: plank, visgraat en tegeldessin. Bereken direct hoeveel pakken u nodig hebt.
+- [Visgraat vloeren](https://ideaal-meubel-vloer.netlify.app/visgraat.html): Visgraat vloeren in laminaat en PVC bij Ideaal Meubel & Vloer in Amsterdam. Klassiek patroon, vakkundig gelegd. Bereken direct hoeveel pakken u nodig hebt.
+
+## Vloercollectie
 
 - [Eiken Naturel laminaat](https://ideaal-meubel-vloer.netlify.app/laminaat/eiken-naturel.html): plank, 8 mm, AC4, 1380 × 193 mm, € 24,95 per m². Een rustige, geborstelde eikenstructuur in een warme naturel tint. Past in vrijwel elk interieur.
 - [Eiken Blank laminaat](https://ideaal-meubel-vloer.netlify.app/laminaat/eiken-blank.html): plank, 8 mm, AC4, 1380 × 193 mm, € 22,95 per m². Licht, fris en tijdloos. Maakt kleine ruimtes optisch groter.
@@ -39,7 +46,13 @@
 
 ## Diensten
 
-- Vloeren leveren en leggen (laminaat in plank, visgraat en tegeldessin)
-- Trapbekleding en traprenovatie
-- Meubels
-- Raamdecoratie
+- [Legservice: uw vloer vakkundig gelegd](https://ideaal-meubel-vloer.netlify.app/diensten/legservice.html): Onze eigen leggers leggen uw PVC of laminaat van begin tot eind: inmeten, de ondergrond controleren, ondervloer, leggen en afwerken met plinten. U krijgt vooraf een duidelijke prijs en wij laten alles netjes achter.
+- [PVC laten leggen](https://ideaal-meubel-vloer.netlify.app/diensten/pvc-laten-leggen.html): Wij leggen uw PVC vloer als klikvloer of als plakvloer, recht of in visgraat. Een PVC vloer is zo strak als de ondergrond eronder. Daarom controleren wij de vloer eerst en egaliseren wij waar nodig.
+- [Laminaat laten leggen](https://ideaal-meubel-vloer.netlify.app/diensten/laminaat-laten-leggen.html): Wij leggen uw laminaat als plank, visgraat of tegeldessin. Met de juiste ondervloer, een dilatatievoeg langs de muren en strakke plinten. Een laminaatvloer in een gewone woonkamer ligt vaak binnen één dag.
+
+## Ook in de winkel
+
+- [Banken](https://ideaal-meubel-vloer.netlify.app/assortiment/banken.html): Een bank koopt u niet van een foto. Daarom staan onze banken in de winkel aan de Jan Evertsenstraat, zodat u ze kunt zien, voelen en uitproberen. Wij denken mee over maat, kleur en stof, passend bij uw vloer en ruimte.
+- [Bedden](https://ideaal-meubel-vloer.netlify.app/assortiment/bedden.html): Een goed bed kiest u met aandacht. In onze winkel aan de Jan Evertsenstraat bekijkt u de bedden in het echt en krijgt u persoonlijk advies over maat en stijl, passend bij uw slaapkamer.
+- [Tapijt op trappen](https://ideaal-meubel-vloer.netlify.app/assortiment/tapijt-op-trappen.html): Tapijt op de trap maakt de trap stiller, warmer en minder glad. Wij meten uw trap op, helpen u kiezen in de winkel en bekleden de trap netjes en strak. Een trap is vaak binnen één dag klaar.
+- [Jaloezieën](https://ideaal-meubel-vloer.netlify.app/assortiment/jaloezieen.html): Jaloezieën op maat voor uw ramen. Wij meten op, u kiest de kleur en uitvoering in de winkel, en wij hangen de jaloezieën netjes op. Ook voor gordijnen en vitrage kunt u bij ons terecht.

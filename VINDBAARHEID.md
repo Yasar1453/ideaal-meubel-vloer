@@ -30,7 +30,7 @@ AI-assistenten en Google vertrouwen een bedrijf meer als dezelfde naam, hetzelfd
 | Trustoo, Werkspot, Homedeal | Vergelijkingssites voor vloerenleggers, met reviews | Middel |
 | Telefoonboek.nl, Openingstijden.com, Cylex | Bedrijvengidsen | Middel |
 | Leveranciers / merken | Veel vloerenmerken hebben een "dealer zoeken"-pagina; vraag om vermelding met link | Hoog |
-| Lokale media of wijkblad | Een artikel over 20 jaar in het vak | Laag, wel sterk |
+| Lokale media of wijkblad | Een artikel over 25 jaar in het vak | Laag, wel sterk |
 
 ## Reviews
 

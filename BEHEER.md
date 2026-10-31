@@ -5,6 +5,7 @@ Portaal: https://ideaal-meubel-vloer.netlify.app/beheer/
 
 - **Bestellingen:** elke aanvraag van de website komt hier binnen. Zet de status op Nieuw, In behandeling of Afgerond.
 - **Producten:** vloer toevoegen (foto, naam, beschrijving, prijs), bewerken of verwijderen. De website past zich direct aan: productpagina, collectie, sitemap en de info voor Google en AI.
+  Kies bij "Soort vloer" Laminaat of PVC. PVC komt op de pagina PVC vloeren, laminaat op Laminaat vloeren. Elke vloer met legpatroon Visgraat staat ook op Visgraat vloeren.
 - **Account:** wachtwoord wijzigen.
 
 ## Hoe het werkt
@@ -22,3 +23,8 @@ In Netlify: Domain management > Add a domain (bijv. ideaalmeubel.nl) en de DNS b
 ## Nog niet
 
 - Geen e-mailmelding bij een nieuwe bestelling: kijk in het portaal (de teller bij Bestellingen toont nieuwe aanvragen).
+
+## Teksten die niet in het portaal staan
+- Diensten (legservice, PVC en laminaat laten leggen): `content/diensten/*.html`.
+- Banken, bedden, tapijt op trappen en jaloezieën: `content/assortiment/*.html`.
+- Google-reviews: `content/reviews.json` (overgenomen van Google Maps op 31-10-2026). Score en aantal daar bijwerken als die op Google veranderen.

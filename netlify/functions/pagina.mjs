@@ -30,5 +30,5 @@ export default async (req, context) => {
 
 export const config = {
   path: ['/', '/index.html', '/laminaat', '/laminaat.html', '/laminaat/*', '/kennisbank', '/kennisbank.html', '/kennisbank/*',
-    '/bestellen', '/bestellen.html', '/product.html', '/js/data.js', '/sitemap.xml', '/robots.txt', '/llms.txt'],
+    '/bestellen', '/bestellen.html', '/pvc-vloeren', '/pvc-vloeren.html', '/pvc/*', '/visgraat', '/visgraat.html', '/diensten/*', '/assortiment/*', '/product.html', '/js/data.js', '/sitemap.xml', '/robots.txt', '/llms.txt'],
 };

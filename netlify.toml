@@ -1,6 +1,6 @@
 [build]
   publish = "dist"
-  command = "node lib/bouw.mjs && rm -rf dist && mkdir dist && cp -R *.html *.xml *.txt css js img laminaat kennisbank beheer dist/"
+  command = "node lib/bouw.mjs && rm -rf dist && mkdir dist && cp -R *.html *.xml *.txt css js img laminaat pvc kennisbank diensten assortiment beheer dist/"
 
 [functions]
   directory = "netlify/functions"

@@ -5,7 +5,8 @@ import { leesWinkel, schrijfWinkel, bestellingen, prive, fotos } from '../../lib
 
 const TYPES = ['Plank', 'Visgraat', 'Tegeldessin'];
 const TINTEN = ['Licht', 'Naturel', 'Grijs', 'Donker'];
-const KLASSEN = ['AC3', 'AC4', 'AC5'];
+const KLASSEN = ['AC3', 'AC4', 'AC5', 'Klasse 23', 'Klasse 31', 'Klasse 32', 'Klasse 33', 'Klasse 34'];
+const SOORTEN = ['Laminaat', 'PVC'];
 const STATUS = ['nieuw', 'bezig', 'klaar'];
 const SESSIE_DAGEN = 14;
 
@@ -65,6 +66,7 @@ async function productOpslaan(body) {
   const p = {
     id: bestaand ? bestaand.id : '',
     naam: schoon(body.naam, 60),
+    soort: SOORTEN.includes(body.soort) ? body.soort : 'Laminaat',
     lijn: schoon(body.lijn, 30) || 'Classic',
     type: TYPES.includes(body.type) ? body.type : 'Plank',
     tint: TINTEN.includes(body.tint) ? body.tint : 'Naturel',
@@ -81,7 +83,7 @@ async function productOpslaan(body) {
   if (!p.tekst) return fout('Vul een beschrijving in.');
   if (!(p.prijs > 0 && p.prijs <= 1000)) return fout('Vul een geldige prijs per m² in.');
   if (!(p.pak > 0 && p.pak <= 20)) return fout('Vul in hoeveel m² er in een pak zit.');
-  if (!(p.dikte >= 4 && p.dikte <= 20)) return fout('Vul een dikte in millimeters in (bijv. 8).');
+  if (!(p.dikte >= 2 && p.dikte <= 20)) return fout('Vul een dikte in millimeters in (bijv. 8).');
   if (!bestaand && !body.foto) return fout('Kies een foto van de vloer.');
 
   if (!bestaand) {

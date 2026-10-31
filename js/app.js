@@ -8,7 +8,8 @@
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const byId = (id) => D.laminaat.find((p) => p.id === id);
   const img = (p) => R + (p.foto || 'img/laminaat/' + p.id + '.jpg');
-  const productUrl = (p) => R + 'laminaat/' + p.id + '.html';
+  const soort = (p) => (p.soort === 'PVC' ? 'PVC' : 'laminaat');
+  const productUrl = (p) => R + (p.soort === 'PVC' ? 'pvc/' : 'laminaat/') + p.id + '.html';
   const snijverlies = (p) => (p.type === 'Visgraat' ? 0.15 : D.snijverlies);
   const esc = (v) => String(v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   // Leest "5,2", "5.2" of "1.250,5" als getal; ongeldig of niet eindig wordt NaN.
@@ -60,13 +61,28 @@
   const solid = page !== 'home';
   const logo = `<img src="${R}img/logo-licht.svg" alt="">`;
   const headerLogo = solid ? `<img src="${R}img/logo.svg" alt="">` : logo;
+  const sectie = document.body.dataset.sectie;
+  const actief = (page === 'laminaat' || page === 'product' || sectie === 'assortiment') ? 'producten' : sectie === 'diensten' ? 'diensten' : page;
   const navItems = [
-    ['index.html#diensten', 'Diensten', 'diensten'],
-    ['laminaat.html', 'Laminaat', 'laminaat'],
-    ['kennisbank.html', 'Kennisbank', 'kennisbank'],
-    ['index.html#over', 'Over ons', 'over'],
-    ['index.html#contact', 'Contact', 'contact']
+    ['producten', 'Producten', [
+      ['Vloeren', [['pvc-vloeren.html', 'PVC vloeren'], ['laminaat.html', 'Laminaat vloeren'], ['visgraat.html', 'Visgraat vloeren']]],
+      ['Wonen', [['assortiment/banken.html', 'Banken'], ['assortiment/bedden.html', 'Bedden'], ['assortiment/tapijt-op-trappen.html', 'Tapijt op trappen'], ['assortiment/jaloezieen.html', 'Jaloezieën']]]
+    ]],
+    ['diensten', 'Diensten', [
+      ['', [['diensten/legservice.html', 'Legservice'], ['diensten/pvc-laten-leggen.html', 'PVC laten leggen'], ['diensten/laminaat-laten-leggen.html', 'Laminaat laten leggen']]]
+    ]],
+    ['kennisbank', 'Kennisbank', 'kennisbank.html'],
+    ['over', 'Over ons', 'index.html#over'],
+    ['contact', 'Contact', 'index.html#contact']
   ];
+  const hier = location.pathname.replace(/\/$/, '/index.html');
+  const navHtml = navItems.map(([k, t, doel]) => {
+    const cls = k === actief ? ' active' : '';
+    if (typeof doel === 'string') return `<a href="${R}${doel}" class="nav-link${cls}">${t}</a>`;
+    return `<div class="nav-item"><button type="button" class="nav-link nav-knop${cls}" aria-expanded="false" aria-controls="sub-${k}">${t}<i class="pijl" aria-hidden="true"></i></button>
+      <div class="sub" id="sub-${k}">${doel.map(([kop, links]) => `<div class="sub-groep">${kop ? `<span class="sub-kop">${kop}</span>` : ''}${links.map(([h, n]) =>
+        `<a href="${R}${h}"${hier.endsWith('/' + h) ? ' aria-current="page"' : ''}>${n}</a>`).join('')}</div>`).join('')}</div></div>`;
+  }).join('');
   $('#site-header').outerHTML = `
     <div class="topbar"><div class="wrap">
       <span>Vloeren · Meubels · Trapbekleding · Raamdecoratie</span>
@@ -75,7 +91,7 @@
     <header class="header${solid ? ' solid' : ''}"><div class="wrap">
       <a class="brand" href="${R}index.html" aria-label="Ideaal Meubel &amp; Vloer, home">${headerLogo}
         <span class="brand-text"><strong>IDEAAL</strong><span>Meubel &amp; Vloer</span></span></a>
-      <nav class="nav" id="nav">${navItems.map(([h, t, k]) => `<a href="${R}${h}"${k === page ? ' class="active"' : ''}>${t}</a>`).join('')}</nav>
+      <nav class="nav" id="nav" aria-label="Hoofdmenu">${navHtml}</nav>
       <div class="header-actions">
         <a class="cart-link" href="${R}bestellen.html">Bestelling <span class="cart-count">0</span></a>
         <a class="btn btn-brass" href="${R}index.html#contact">Afspraak maken</a>
@@ -88,19 +104,22 @@
       <div class="footer-grid">
         <div>
           <a class="brand" href="${R}index.html" aria-label="Ideaal Meubel &amp; Vloer, home">${logo}<span class="brand-text"><strong>IDEAAL</strong><span>Meubel &amp; Vloer</span></span></a>
-          <p>Alles onder één dak. Al 20 jaar specialist in vloeren, meubels, trapbekleding en raamdecoratie.</p>
+          <p>Alles onder één dak. Al 25 jaar specialist in vloeren, meubels, trapbekleding en raamdecoratie.</p>
         </div>
-        <div><h4>Collectie</h4><ul>
-          <li><a href="${R}laminaat.html">Laminaat</a></li>
-          <li><a href="${R}laminaat.html?type=Visgraat">Visgraat</a></li>
-          <li><a href="${R}laminaat.html?water=1">Waterbestendig</a></li>
+        <div><h4>Producten</h4><ul>
+          <li><a href="${R}pvc-vloeren.html">PVC vloeren</a></li>
+          <li><a href="${R}laminaat.html">Laminaat vloeren</a></li>
+          <li><a href="${R}visgraat.html">Visgraat vloeren</a></li>
+          <li><a href="${R}assortiment/banken.html">Banken</a></li>
+          <li><a href="${R}assortiment/bedden.html">Bedden</a></li>
+          <li><a href="${R}assortiment/tapijt-op-trappen.html">Tapijt op trappen</a></li>
+          <li><a href="${R}assortiment/jaloezieen.html">Jaloezieën</a></li></ul></div>
+        <div><h4>Diensten</h4><ul>
+          <li><a href="${R}diensten/legservice.html">Legservice</a></li>
+          <li><a href="${R}diensten/pvc-laten-leggen.html">PVC laten leggen</a></li>
+          <li><a href="${R}diensten/laminaat-laten-leggen.html">Laminaat laten leggen</a></li>
           <li><a href="${R}kennisbank.html">Kennisbank</a></li>
           <li><a href="${R}bestellen.html">Uw bestelling</a></li></ul></div>
-        <div><h4>Diensten</h4><ul>
-          <li><a href="${R}index.html#diensten">Vloeren leggen</a></li>
-          <li><a href="${R}index.html#diensten">Trapbekleding</a></li>
-          <li><a href="${R}index.html#diensten">Meubels</a></li>
-          <li><a href="${R}index.html#diensten">Raamdecoratie</a></li></ul></div>
         <div><h4>Contact</h4><ul>
           <li>${esc(D.adres.straat)}<br>${esc(D.adres.postcode)} ${esc(D.adres.plaats)}</li>
           <li><a href="${D.telefoonLink}">${D.telefoon}</a></li>
@@ -111,7 +130,18 @@
     </div></footer>`;
 
   $('.menu-toggle').addEventListener('click', (e) => { const open = $('#nav').classList.toggle('open'); e.currentTarget.setAttribute('aria-expanded', open); });
-  $$('#nav a').forEach((a) => a.addEventListener('click', () => { $('#nav').classList.remove('open'); $('.menu-toggle').setAttribute('aria-expanded', 'false'); }));
+  $$('#nav a').forEach((a) => a.addEventListener('click', () => { $('#nav').classList.remove('open'); $('.menu-toggle').setAttribute('aria-expanded', 'false'); sluitSubs(); }));
+  // Uitklapmenu's: klikken (touch en toetsenbord), Escape en klikken buiten het menu sluiten ze.
+  const sluitSubs = (behalve) => $$('.nav-knop').forEach((b) => { if (b !== behalve) { b.setAttribute('aria-expanded', 'false'); b.parentElement.classList.remove('open'); } });
+  $$('.nav-knop').forEach((b) => b.addEventListener('click', () => {
+    const open = b.getAttribute('aria-expanded') !== 'true';
+    sluitSubs(b); b.setAttribute('aria-expanded', open); b.parentElement.classList.toggle('open', open);
+  }));
+  document.addEventListener('click', (e) => { if (!e.target.closest('.nav-item')) sluitSubs(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const open = $('.nav-item.open .nav-knop'); sluitSubs(); if (open) open.focus();
+  });
   updateCount();
   // Bestelling in een ander tabblad aangepast: teller bijwerken.
   window.addEventListener('storage', (e) => { if (e.key === KEY || e.key === null) updateCount(); });
@@ -119,7 +149,7 @@
   /* ---------- Productkaart ---------- */
   const card = (p) => `
     <a class="card" href="${productUrl(p)}">
-      <div class="card-img"><img src="${img(p)}" alt="${esc(p.naam)} laminaat" loading="lazy">
+      <div class="card-img"><img src="${img(p)}" alt="${esc(p.naam)} ${soort(p)}" loading="lazy">
         ${p.water ? '<span class="card-tag">Waterbestendig</span>' : ''}</div>
       <div class="card-body">
         <div><h3>${esc(p.naam)}</h3><div class="card-meta">${esc(p.type)} · ${esc(p.dikte)} mm · ${esc(p.klasse)}</div></div>
@@ -137,8 +167,14 @@
   /* ---------- Collectie met filters ---------- */
   if (page === 'laminaat') {
     const qs = new URLSearchParams(location.search);
-    const groups = { type: ['Plank', 'Visgraat', 'Tegeldessin'], tint: ['Licht', 'Naturel', 'Grijs', 'Donker'], dikte: [8, 10, 12] };
-    const labels = { type: 'Type', tint: 'Kleur', dikte: 'Dikte' };
+    const col = document.body.dataset.collectie || 'laminaat';
+    const basis = D.laminaat.filter((p) => col === 'pvc' ? p.soort === 'PVC' : col === 'visgraat' ? p.type === 'Visgraat' : p.soort !== 'PVC');
+    const naamCol = { pvc: 'PVC vloeren', laminaat: 'laminaat vloeren', visgraat: 'visgraat vloeren' }[col];
+    const diktes = [...new Set(basis.map((p) => p.dikte))].sort((a, b) => a - b);
+    const groups = col === 'visgraat'
+      ? { soort: ['Laminaat', 'PVC'], tint: ['Licht', 'Naturel', 'Grijs', 'Donker'], dikte: diktes }
+      : { type: ['Plank', 'Visgraat', 'Tegeldessin'], tint: ['Licht', 'Naturel', 'Grijs', 'Donker'], dikte: diktes };
+    const labels = { type: 'Legpatroon', soort: 'Soort', tint: 'Kleur', dikte: 'Dikte' };
     $('#filters').innerHTML = Object.entries(groups).map(([k, opts]) => `
       <div class="filter-group"><h4>${labels[k]}</h4>
         ${opts.map((o) => `<label><input type="checkbox" name="${k}" value="${o}"${qs.getAll(k).includes(String(o)) ? ' checked' : ''}> ${o}${k === 'dikte' ? ' mm' : ''}</label>`).join('')}
@@ -148,21 +184,25 @@
 
     const render = () => {
       const sel = (k) => $$(`#filters input[name=${k}]:checked`).map((i) => i.value);
-      const t = sel('type'), c = sel('tint'), d = sel('dikte').map(Number), w = sel('water').length > 0;
-      let list = D.laminaat.filter((p) =>
-        (!t.length || t.includes(p.type)) && (!c.length || c.includes(p.tint)) &&
+      const t = sel('type'), so = sel('soort'), c = sel('tint'), d = sel('dikte').map(Number), w = sel('water').length > 0;
+      let list = basis.filter((p) =>
+        (!t.length || t.includes(p.type)) && (!so.length || so.includes(p.soort === 'PVC' ? 'PVC' : 'Laminaat')) && (!c.length || c.includes(p.tint)) &&
         (!d.length || d.includes(p.dikte)) && (!w || p.water));
       const s = $('#sort').value;
       if (s === 'laag') list.sort((a, b) => a.prijs - b.prijs);
       if (s === 'hoog') list.sort((a, b) => b.prijs - a.prijs);
       if (s === 'naam') list.sort((a, b) => a.naam.localeCompare(b.naam));
       $('#count').textContent = list.length + (list.length === 1 ? ' vloer' : ' vloeren');
-      $('#products').innerHTML = list.length ? list.map(card).join('') :
-        '<p class="empty">Geen vloeren gevonden met deze filters. Pas uw keuze aan of bel ons voor advies.</p>';
+      $('#products').innerHTML = list.length ? list.map(card).join('') : !basis.length
+        ? `<div class="leeg-blok"><span class="kicker">${naamCol}</span><h2>Bekijk de ${naamCol} in onze winkel</h2>
+          <p class="lead">Deze collectie staat binnenkort online. In de winkel aan de ${esc(D.adres.straat)} ziet en voelt u de vloeren in het echt, en wij adviseren u graag.</p>
+          <div class="hero-actions"><a class="btn btn-dark" href="${D.telefoonLink}">Bel ${D.telefoon} <i class="arrow"></i></a><a class="btn btn-line dark" href="${R}diensten/legservice.html">Onze legservice</a></div></div>`
+        : '<p class="empty">Geen vloeren gevonden met deze filters. Pas uw keuze aan of bel ons voor advies.</p>';
     };
     $('#filters').addEventListener('change', render);
     $('#sort').addEventListener('change', render);
     $('.filter-toggle').addEventListener('click', () => $('#filters').classList.toggle('open'));
+    if (!basis.length) { $('#filters').hidden = true; $('.shop-bar').hidden = true; $('.shop').classList.add('leeg'); }
     render();
   }
 
@@ -171,16 +211,16 @@
     const p = byId(document.body.dataset.product || new URLSearchParams(location.search).get('id'));
     if (!p) {
       document.title = 'Vloer niet gevonden | Ideaal Meubel & Vloer';
-      $('.product').innerHTML = `<div class="done"><span class="kicker">Laminaat</span><h2>Deze vloer bestaat niet (meer)</h2>
+      $('.product').innerHTML = `<div class="done"><span class="kicker">Vloeren</span><h2>Deze vloer bestaat niet (meer)</h2>
         <p class="lead">Mogelijk is de link verouderd. Bekijk de actuele collectie of bel ons voor advies.</p>
         <a class="btn btn-dark" href="${R}laminaat.html">Bekijk de collectie <i class="arrow"></i></a></div>`;
       $('#crumb-name').textContent = 'Niet gevonden';
       $('#related').innerHTML = D.laminaat.slice(0, 3).map(card).join('');
       return;
     }
-    if (!document.body.dataset.product) document.title = p.naam + ' laminaat | Ideaal Meubel & Vloer';
+    if (!document.body.dataset.product) document.title = p.naam + ' ' + soort(p) + ' | Ideaal Meubel & Vloer';
     $('#crumb-name').textContent = p.naam;
-    $('#p-img').src = img(p); $('#p-img').alt = p.naam + ' laminaat';
+    $('#p-img').src = img(p); $('#p-img').alt = p.naam + ' ' + soort(p);
     $('#p-lijn').textContent = 'Collectie ' + p.lijn;
     $('#p-naam').textContent = p.naam;
     $('#p-prijs').innerHTML = `${eur(p.prijs)} <small>per m² · ${eur(p.prijs * p.pak)} per pak</small>`;
@@ -212,7 +252,7 @@
       added.classList.add('show');
     });
     calc();
-    $('#related').innerHTML = D.laminaat.filter((x) => x.id !== p.id && (x.type === p.type || x.tint === p.tint)).slice(0, 3).map(card).join('');
+    $('#related').innerHTML = D.laminaat.filter((x) => x.id !== p.id && soort(x) === soort(p) && (x.type === p.type || x.tint === p.tint)).slice(0, 3).map(card).join('');
   }
 
   /* ---------- Bestellen (aanvraag, geen betaling) ---------- */
@@ -236,7 +276,7 @@
       const t = totals();
       if (!t.items.length) {
         $('#order-wrap').innerHTML = `<div class="done"><span class="kicker">Uw bestelling</span><h2>Nog geen vloer gekozen</h2>
-          <p class="lead">Kies een laminaat uit de collectie, vul de afmetingen van uw ruimte in en wij rekenen het aantal pakken voor u uit.</p>
+          <p class="lead">Kies een vloer uit de collectie, vul de afmetingen van uw ruimte in en wij rekenen het aantal pakken voor u uit.</p>
           <a class="btn btn-dark" href="${R}laminaat.html">Bekijk de collectie <i class="arrow"></i></a></div>`;
         return;
       }
@@ -260,7 +300,7 @@
           <div class="line-total">${eur(i.pakken * p.pak * p.prijs)}</div></div>`;
       }).join('');
       $('#sum').innerHTML = `
-        <div class="sum-row"><span>Laminaat (${m2(t.opp)})</span><span>${eur(t.vloer)}</span></div>
+        <div class="sum-row"><span>Vloer (${m2(t.opp)})</span><span>${eur(t.vloer)}</span></div>
         <div class="sum-row"><span>${t.ov.naam}</span><span>${eur(t.ondervloer)}</span></div>
         <div class="sum-row"><span>Plinten (${String(t.plintM).replace('.', ',')} m)</span><span>${eur(t.plinten)}</span></div>
         <div class="sum-row"><span>Leggen</span><span>${$('input[name=leggen]:checked').value === 'ja' ? 'Op offerte' : 'Zelf leggen'}</span></div>
@@ -313,7 +353,7 @@
       if (!t.items.length) { render(); return; }
       const regels = t.items.map((i) => { const p = byId(i.id); return `- ${p.naam}: ${i.pakken} pakken (${m2(i.pakken * p.pak)}) = ${eur(i.pakken * p.pak * p.prijs)}`; });
       const tekst = [
-        'BESTELAANVRAAG LAMINAAT', '', ...regels, '',
+        'BESTELAANVRAAG VLOEREN', '', ...regels, '',
         `Ondervloer: ${t.ov.naam} (${eur(t.ondervloer)})`, `Plinten: ${t.plintM} m (${eur(t.plinten)})`,
         `Leggen door Ideaal: ${f.get('leggen') === 'ja' ? 'ja, graag een offerte' : 'nee, zelf leggen'}`,
         `Levering: ${f.get('levering') === 'bezorgen' ? 'bezorgen' : 'ophalen in de winkel'}`,
@@ -334,7 +374,7 @@
           }) });
         ok = r.ok && (await r.json()).ok === true;
       } catch (err) { ok = false; }
-      const mailto = `mailto:${D.email}?subject=${encodeURIComponent('Bestelaanvraag laminaat - ' + f.get('naam'))}&body=${encodeURIComponent(tekst)}`;
+      const mailto = `mailto:${D.email}?subject=${encodeURIComponent('Bestelaanvraag vloer - ' + f.get('naam'))}&body=${encodeURIComponent(tekst)}`;
       if (!ok) location.href = mailto;
       cart.set([]);
       const voornaam = esc(String(f.get('naam')).trim().split(/\s+/)[0]);
