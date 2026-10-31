@@ -66,7 +66,8 @@
   const navItems = [
     ['producten', 'Producten', [
       ['Vloeren', [['pvc-vloeren.html', 'PVC vloeren'], ['laminaat.html', 'Laminaat vloeren'], ['visgraat.html', 'Visgraat vloeren']]],
-      ['Wonen', [['assortiment/banken.html', 'Banken'], ['assortiment/bedden.html', 'Bedden'], ['assortiment/tapijt-op-trappen.html', 'Tapijt op trappen'], ['assortiment/jaloezieen.html', 'Jaloezieën']]]
+      ['Wonen', [['assortiment/banken.html', 'Banken'], ['assortiment/bedden.html', 'Bedden'], ['assortiment/tapijt.html', 'Tapijt'], ['assortiment/jaloezieen.html', 'Jaloezieën']]],
+      ['Trappen', [['assortiment/traprenovatie.html', 'Traprenovatie'], ['assortiment/tapijt-op-trappen.html', 'Tapijt op de trap'], ['assortiment/pvc-op-trap.html', 'PVC op de trap']]]
     ]],
     ['diensten', 'Diensten', [
       ['', [['diensten/legservice.html', 'Legservice'], ['diensten/pvc-laten-leggen.html', 'PVC laten leggen'], ['diensten/laminaat-laten-leggen.html', 'Laminaat laten leggen']]]
@@ -112,7 +113,8 @@
           <li><a href="${R}visgraat.html">Visgraat vloeren</a></li>
           <li><a href="${R}assortiment/banken.html">Banken</a></li>
           <li><a href="${R}assortiment/bedden.html">Bedden</a></li>
-          <li><a href="${R}assortiment/tapijt-op-trappen.html">Tapijt op trappen</a></li>
+          <li><a href="${R}assortiment/tapijt.html">Tapijt</a></li>
+          <li><a href="${R}assortiment/traprenovatie.html">Traprenovatie</a></li>
           <li><a href="${R}assortiment/jaloezieen.html">Jaloezieën</a></li></ul></div>
         <div><h4>Diensten</h4><ul>
           <li><a href="${R}diensten/legservice.html">Legservice</a></li>

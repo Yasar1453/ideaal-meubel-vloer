@@ -70,7 +70,8 @@ h3 { font-size: 1.7rem; }
 .sub { display: none; position: absolute; top: calc(100% + 12px); left: -1.8rem; z-index: 30; gap: 2.6rem; padding: 1.5rem 1.8rem; background: var(--white); color: var(--ink); border: 1px solid var(--line); box-shadow: 0 18px 40px rgba(20, 18, 16, .12); }
 .sub::before { content: ''; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
 .nav-item.open .sub { display: flex; }
-.sub-groep { display: flex; flex-direction: column; min-width: 180px; }
+.sub-groep { display: flex; flex-direction: column; min-width: 165px; }
+@media (max-width: 1180px) and (min-width: 861px) { .sub { gap: 1.8rem; padding: 1.3rem 1.5rem; } .sub-groep { min-width: 140px; } }
 .sub-kop { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--brass-dk); margin-bottom: 0.5rem; }
 .sub a { padding: 0.55rem 0; white-space: nowrap; border-bottom: 1px solid var(--stone); transition: color .2s; }
 .sub a:last-child { border-bottom: 0; }
