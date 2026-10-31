@@ -1,0 +1,6 @@
+prive/*.php
+prive/*.lock
+prive/*.tmp
+data/*.tmp
+.playwright-mcp/
+.DS_Store

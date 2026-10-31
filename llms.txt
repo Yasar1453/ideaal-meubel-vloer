@@ -1,8 +1,10 @@
 # Ideaal Meubel & Vloer
 
-> Ideaal Meubel & Vloer is een woonwinkel voor vloeren (laminaat), meubels, trapbekleding en raamdecoratie. Al 20 jaar experts in wonen, alles onder één dak. Klanten kunnen laminaat online uitzoeken, het aantal pakken laten berekenen en een bestelaanvraag versturen; betaling en levering worden daarna persoonlijk afgestemd.
+> Ideaal Meubel & Vloer is een woonwinkel in Amsterdam voor vloeren (laminaat), meubels, trapbekleding en raamdecoratie. Al 20 jaar experts in wonen, alles onder één dak. Klanten kunnen laminaat online uitzoeken, het aantal pakken laten berekenen en een bestelaanvraag versturen; betaling en levering worden daarna persoonlijk afgestemd.
 
+- Adres: Jan Evertsenstraat 10H, 1056 EC Amsterdam
 - Telefoon: 020-7526672
+- Openingstijden: Maandag 10:00-18:00, Dinsdag 09:00-18:00, Woensdag 09:00-18:00, Donderdag 09:00-20:00, Vrijdag 09:00-18:00, Zaterdag 09:00-18:00, Zondag 12:00-17:00
 - Instagram: https://www.instagram.com/ideaalmeubel/
 - Website: https://yasar1453.github.io/ideaal-meubel-vloer/
 

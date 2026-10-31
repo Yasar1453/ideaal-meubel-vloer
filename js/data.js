@@ -1,56 +1,254 @@
-/* Collectie laminaat.
-   Prijzen en specificaties zijn VOORBEELDWAARDEN: vervang ze door de echte gegevens van Ideaal. */
+/* Gemaakt door bouw.php uit data/winkel.json. Niet met de hand aanpassen: gebruik het beheerportaal (beheer/). */
 window.IDEAAL = {
-  telefoon: '020-7526672',
-  telefoonLink: 'tel:+31207526672',
-  email: 'info@ideaalmeubel.nl', // ⚠️ nog bevestigen
-  snijverlies: 0.05,
-
-  laminaat: [
-    { id: 'eiken-naturel', naam: 'Eiken Naturel', lijn: 'Classic', type: 'Plank', tint: 'Naturel',
-      dikte: 8, klasse: 'AC4', formaat: '1380 × 193 mm', pak: 2.13, prijs: 24.95, water: false,
-      tekst: 'Een rustige, geborstelde eikenstructuur in een warme naturel tint. Past in vrijwel elk interieur.' },
-    { id: 'eiken-blank', naam: 'Eiken Blank', lijn: 'Classic', type: 'Plank', tint: 'Licht',
-      dikte: 8, klasse: 'AC4', formaat: '1380 × 193 mm', pak: 2.13, prijs: 22.95, water: false,
-      tekst: 'Licht, fris en tijdloos. Maakt kleine ruimtes optisch groter.' },
-    { id: 'eiken-warm', naam: 'Eiken Warm', lijn: 'Signature', type: 'Plank', tint: 'Naturel',
-      dikte: 10, klasse: 'AC5', formaat: '1845 × 244 mm', pak: 1.80, prijs: 29.95, water: true,
-      tekst: 'Extra lange en brede planken met een diepe, voelbare nerf. Geschikt voor intensief gebruik.' },
-    { id: 'eiken-honing', naam: 'Eiken Honing', lijn: 'Classic', type: 'Plank', tint: 'Naturel',
-      dikte: 8, klasse: 'AC4', formaat: '1380 × 193 mm', pak: 2.13, prijs: 26.95, water: false,
-      tekst: 'Goudgele eiken tint met levendige kleurverschillen tussen de planken.' },
-    { id: 'eiken-grijs-rustiek', naam: 'Eiken Grijs Rustiek', lijn: 'Signature', type: 'Plank', tint: 'Grijs',
-      dikte: 10, klasse: 'AC5', formaat: '1845 × 244 mm', pak: 1.80, prijs: 31.95, water: true,
-      tekst: 'Verweerde grijze eik met knoesten en scheurtjes. Robuust en karaktervol.' },
-    { id: 'eiken-gerookt', naam: 'Eiken Gerookt', lijn: 'Signature', type: 'Plank', tint: 'Donker',
-      dikte: 12, klasse: 'AC5', formaat: '2050 × 240 mm', pak: 1.97, prijs: 34.95, water: true,
-      tekst: 'Gerookte eik met een stille, matte uitstraling. 12 mm dik voor een massief gevoel onder de voet.' },
-    { id: 'walnoot-donker', naam: 'Walnoot Donker', lijn: 'Signature', type: 'Plank', tint: 'Donker',
-      dikte: 12, klasse: 'AC5', formaat: '2050 × 240 mm', pak: 1.97, prijs: 36.95, water: true,
-      tekst: 'Diep chocoladebruin walnootdessin. Luxe en warm, mooi in combinatie met lichte wanden.' },
-    { id: 'antraciet-tegel', naam: 'Antraciet Tegel', lijn: 'Aqua', type: 'Tegeldessin', tint: 'Grijs',
-      dikte: 8, klasse: 'AC5', formaat: '1200 × 400 mm', pak: 1.92, prijs: 32.95, water: true,
-      tekst: 'Laminaat met de uitstraling van keramiek. Waterbestendig, dus ook geschikt voor keuken en hal.' },
-    { id: 'visgraat-naturel', naam: 'Visgraat Naturel', lijn: 'Visgraat', type: 'Visgraat', tint: 'Naturel',
-      dikte: 8, klasse: 'AC4', formaat: '600 × 120 mm', pak: 1.44, prijs: 39.95, water: false,
-      tekst: 'Het klassieke visgraatpatroon in naturel eiken. Gelegd in A- en B-stroken.' },
-    { id: 'visgraat-cognac', naam: 'Visgraat Cognac', lijn: 'Visgraat', type: 'Visgraat', tint: 'Naturel',
-      dikte: 8, klasse: 'AC4', formaat: '600 × 120 mm', pak: 1.44, prijs: 42.95, water: false,
-      tekst: 'Warme cognactint met een zijdeglans. Geeft een herenhuis-uitstraling.' },
-    { id: 'visgraat-antiek', naam: 'Visgraat Antiek', lijn: 'Visgraat', type: 'Visgraat', tint: 'Donker',
-      dikte: 10, klasse: 'AC5', formaat: '600 × 120 mm', pak: 1.44, prijs: 44.95, water: true,
-      tekst: 'Donker, doorleefd eiken in visgraat. Oogt als een eeuwenoude parketvloer.' },
-    { id: 'visgraat-grafiet', naam: 'Visgraat Grafiet', lijn: 'Visgraat', type: 'Visgraat', tint: 'Grijs',
-      dikte: 10, klasse: 'AC5', formaat: '600 × 120 mm', pak: 1.44, prijs: 44.95, water: true,
-      tekst: 'Grafietgrijs met lichte strepen. Strak en modern, ook als hongaarse punt te leggen.' }
-  ],
-
-  ondervloer: [
-    { id: 'geen', naam: 'Geen ondervloer', prijs: 0 },
-    { id: 'standaard', naam: 'Standaard ondervloer (3 mm)', prijs: 2.95 },
-    { id: 'geluid', naam: 'Geluidsdempend (VvE-geschikt)', prijs: 6.95 },
-    { id: 'vloerverwarming', naam: 'Geschikt voor vloerverwarming', prijs: 4.95 }
-  ],
-
-  plintPrijs: 4.5 // per strekkende meter
+    "naam": "Ideaal Meubel & Vloer",
+    "telefoon": "020-7526672",
+    "telefoonLink": "tel:+31207526672",
+    "email": "info@ideaalmeubel.nl",
+    "adres": {
+        "straat": "Jan Evertsenstraat 10H",
+        "postcode": "1056 EC",
+        "plaats": "Amsterdam"
+    },
+    "geo": {
+        "lat": 52.3715036,
+        "lng": 4.8586921
+    },
+    "openingstijden": [
+        {
+            "dag": "Monday",
+            "naam": "Maandag",
+            "open": "10:00",
+            "dicht": "18:00"
+        },
+        {
+            "dag": "Tuesday",
+            "naam": "Dinsdag",
+            "open": "09:00",
+            "dicht": "18:00"
+        },
+        {
+            "dag": "Wednesday",
+            "naam": "Woensdag",
+            "open": "09:00",
+            "dicht": "18:00"
+        },
+        {
+            "dag": "Thursday",
+            "naam": "Donderdag",
+            "open": "09:00",
+            "dicht": "20:00"
+        },
+        {
+            "dag": "Friday",
+            "naam": "Vrijdag",
+            "open": "09:00",
+            "dicht": "18:00"
+        },
+        {
+            "dag": "Saturday",
+            "naam": "Zaterdag",
+            "open": "09:00",
+            "dicht": "18:00"
+        },
+        {
+            "dag": "Sunday",
+            "naam": "Zondag",
+            "open": "12:00",
+            "dicht": "17:00"
+        }
+    ],
+    "snijverlies": 0.05,
+    "plintPrijs": 4.5,
+    "ondervloer": [
+        {
+            "id": "geen",
+            "naam": "Geen ondervloer",
+            "prijs": 0
+        },
+        {
+            "id": "standaard",
+            "naam": "Standaard ondervloer (3 mm)",
+            "prijs": 2.95
+        },
+        {
+            "id": "geluid",
+            "naam": "Geluidsdempend (VvE-geschikt)",
+            "prijs": 6.95
+        },
+        {
+            "id": "vloerverwarming",
+            "naam": "Geschikt voor vloerverwarming",
+            "prijs": 4.95
+        }
+    ],
+    "laminaat": [
+        {
+            "id": "eiken-naturel",
+            "naam": "Eiken Naturel",
+            "lijn": "Classic",
+            "type": "Plank",
+            "tint": "Naturel",
+            "dikte": 8,
+            "klasse": "AC4",
+            "formaat": "1380 × 193 mm",
+            "pak": 2.13,
+            "prijs": 24.95,
+            "water": false,
+            "tekst": "Een rustige, geborstelde eikenstructuur in een warme naturel tint. Past in vrijwel elk interieur."
+        },
+        {
+            "id": "eiken-blank",
+            "naam": "Eiken Blank",
+            "lijn": "Classic",
+            "type": "Plank",
+            "tint": "Licht",
+            "dikte": 8,
+            "klasse": "AC4",
+            "formaat": "1380 × 193 mm",
+            "pak": 2.13,
+            "prijs": 22.95,
+            "water": false,
+            "tekst": "Licht, fris en tijdloos. Maakt kleine ruimtes optisch groter."
+        },
+        {
+            "id": "eiken-warm",
+            "naam": "Eiken Warm",
+            "lijn": "Signature",
+            "type": "Plank",
+            "tint": "Naturel",
+            "dikte": 10,
+            "klasse": "AC5",
+            "formaat": "1845 × 244 mm",
+            "pak": 1.8,
+            "prijs": 29.95,
+            "water": true,
+            "tekst": "Extra lange en brede planken met een diepe, voelbare nerf. Geschikt voor intensief gebruik."
+        },
+        {
+            "id": "eiken-honing",
+            "naam": "Eiken Honing",
+            "lijn": "Classic",
+            "type": "Plank",
+            "tint": "Naturel",
+            "dikte": 8,
+            "klasse": "AC4",
+            "formaat": "1380 × 193 mm",
+            "pak": 2.13,
+            "prijs": 26.95,
+            "water": false,
+            "tekst": "Goudgele eiken tint met levendige kleurverschillen tussen de planken."
+        },
+        {
+            "id": "eiken-grijs-rustiek",
+            "naam": "Eiken Grijs Rustiek",
+            "lijn": "Signature",
+            "type": "Plank",
+            "tint": "Grijs",
+            "dikte": 10,
+            "klasse": "AC5",
+            "formaat": "1845 × 244 mm",
+            "pak": 1.8,
+            "prijs": 31.95,
+            "water": true,
+            "tekst": "Verweerde grijze eik met knoesten en scheurtjes. Robuust en karaktervol."
+        },
+        {
+            "id": "eiken-gerookt",
+            "naam": "Eiken Gerookt",
+            "lijn": "Signature",
+            "type": "Plank",
+            "tint": "Donker",
+            "dikte": 12,
+            "klasse": "AC5",
+            "formaat": "2050 × 240 mm",
+            "pak": 1.97,
+            "prijs": 34.95,
+            "water": true,
+            "tekst": "Gerookte eik met een stille, matte uitstraling. 12 mm dik voor een massief gevoel onder de voet."
+        },
+        {
+            "id": "walnoot-donker",
+            "naam": "Walnoot Donker",
+            "lijn": "Signature",
+            "type": "Plank",
+            "tint": "Donker",
+            "dikte": 12,
+            "klasse": "AC5",
+            "formaat": "2050 × 240 mm",
+            "pak": 1.97,
+            "prijs": 36.95,
+            "water": true,
+            "tekst": "Diep chocoladebruin walnootdessin. Luxe en warm, mooi in combinatie met lichte wanden."
+        },
+        {
+            "id": "antraciet-tegel",
+            "naam": "Antraciet Tegel",
+            "lijn": "Aqua",
+            "type": "Tegeldessin",
+            "tint": "Grijs",
+            "dikte": 8,
+            "klasse": "AC5",
+            "formaat": "1200 × 400 mm",
+            "pak": 1.92,
+            "prijs": 32.95,
+            "water": true,
+            "tekst": "Laminaat met de uitstraling van keramiek. Waterbestendig, dus ook geschikt voor keuken en hal."
+        },
+        {
+            "id": "visgraat-naturel",
+            "naam": "Visgraat Naturel",
+            "lijn": "Visgraat",
+            "type": "Visgraat",
+            "tint": "Naturel",
+            "dikte": 8,
+            "klasse": "AC4",
+            "formaat": "600 × 120 mm",
+            "pak": 1.44,
+            "prijs": 39.95,
+            "water": false,
+            "tekst": "Het klassieke visgraatpatroon in naturel eiken. Gelegd in A- en B-stroken."
+        },
+        {
+            "id": "visgraat-cognac",
+            "naam": "Visgraat Cognac",
+            "lijn": "Visgraat",
+            "type": "Visgraat",
+            "tint": "Naturel",
+            "dikte": 8,
+            "klasse": "AC4",
+            "formaat": "600 × 120 mm",
+            "pak": 1.44,
+            "prijs": 42.95,
+            "water": false,
+            "tekst": "Warme cognactint met een zijdeglans. Geeft een herenhuis-uitstraling."
+        },
+        {
+            "id": "visgraat-antiek",
+            "naam": "Visgraat Antiek",
+            "lijn": "Visgraat",
+            "type": "Visgraat",
+            "tint": "Donker",
+            "dikte": 10,
+            "klasse": "AC5",
+            "formaat": "600 × 120 mm",
+            "pak": 1.44,
+            "prijs": 44.95,
+            "water": true,
+            "tekst": "Donker, doorleefd eiken in visgraat. Oogt als een eeuwenoude parketvloer."
+        },
+        {
+            "id": "visgraat-grafiet",
+            "naam": "Visgraat Grafiet",
+            "lijn": "Visgraat",
+            "type": "Visgraat",
+            "tint": "Grijs",
+            "dikte": 10,
+            "klasse": "AC5",
+            "formaat": "600 × 120 mm",
+            "pak": 1.44,
+            "prijs": 44.95,
+            "water": true,
+            "tekst": "Grafietgrijs met lichte strepen. Strak en modern, ook als hongaarse punt te leggen."
+        }
+    ]
 };

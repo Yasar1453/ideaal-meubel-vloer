@@ -335,3 +335,11 @@ h3 { font-size: 1.7rem; }
 @media (max-width: 1080px) { .kb-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .kb-grid { grid-template-columns: 1fr; } .kb-item { padding: 1.5rem; } .prose { font-size: 1rem; } }
 .kb-item p { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Adres en openingstijden (contactblok) */
+.contact-list #winkel-adres { text-align: right; line-height: 1.5; }
+.contact-list #winkel-adres a { color: #fff; font-size: 1rem; }
+.tijden-kop { font-family: 'Manrope', sans-serif; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: #d9bc8c; font-weight: 600; margin: 2rem 0 0.6rem; }
+.tijden { list-style: none; font-size: 0.92rem; }
+.tijden li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.35rem 0; color: #fff; }
+.tijden li span:first-child { color: #a59d91; }

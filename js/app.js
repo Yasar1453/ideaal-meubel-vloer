@@ -102,6 +102,7 @@
           <li><a href="${R}index.html#diensten">Meubels</a></li>
           <li><a href="${R}index.html#diensten">Raamdecoratie</a></li></ul></div>
         <div><h4>Contact</h4><ul>
+          <li>${esc(D.adres.straat)}<br>${esc(D.adres.postcode)} ${esc(D.adres.plaats)}</li>
           <li><a href="${D.telefoonLink}">${D.telefoon}</a></li>
           <li><a href="mailto:${D.email}">${D.email}</a></li>
           <li><a href="https://www.instagram.com/ideaalmeubel/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
@@ -118,17 +119,18 @@
   /* ---------- Productkaart ---------- */
   const card = (p) => `
     <a class="card" href="${productUrl(p)}">
-      <div class="card-img"><img src="${img(p)}" alt="${p.naam} laminaat" loading="lazy">
+      <div class="card-img"><img src="${img(p)}" alt="${esc(p.naam)} laminaat" loading="lazy">
         ${p.water ? '<span class="card-tag">Waterbestendig</span>' : ''}</div>
       <div class="card-body">
-        <div><h3>${p.naam}</h3><div class="card-meta">${p.type} · ${p.dikte} mm · ${p.klasse}</div></div>
+        <div><h3>${esc(p.naam)}</h3><div class="card-meta">${esc(p.type)} · ${esc(p.dikte)} mm · ${esc(p.klasse)}</div></div>
         <div class="card-price"><strong>${eur(p.prijs)}</strong><span>per m²</span></div>
       </div>
     </a>`;
 
   /* ---------- Home: uitgelicht ---------- */
   if (page === 'home') {
-    const pick = ['eiken-gerookt', 'visgraat-naturel', 'eiken-grijs-rustiek'].map(byId);
+    const pick = ['eiken-gerookt', 'visgraat-naturel', 'eiken-grijs-rustiek'].map(byId).filter(Boolean);
+    D.laminaat.forEach((p) => { if (pick.length < 3 && !pick.includes(p)) pick.push(p); });
     $('#featured').innerHTML = pick.map(card).join('');
   }
 
@@ -173,7 +175,7 @@
         <p class="lead">Mogelijk is de link verouderd. Bekijk de actuele collectie of bel ons voor advies.</p>
         <a class="btn btn-dark" href="${R}laminaat.html">Bekijk de collectie <i class="arrow"></i></a></div>`;
       $('#crumb-name').textContent = 'Niet gevonden';
-      $('#related').innerHTML = ['eiken-gerookt', 'visgraat-naturel', 'eiken-grijs-rustiek'].map(byId).map(card).join('');
+      $('#related').innerHTML = D.laminaat.slice(0, 3).map(card).join('');
       return;
     }
     if (!document.body.dataset.product) document.title = p.naam + ' laminaat | Ideaal Meubel & Vloer';
@@ -185,8 +187,8 @@
     $('#p-tekst').textContent = p.tekst;
     $('#p-specs').innerHTML = [
       ['Type', p.type], ['Dikte', p.dikte + ' mm'], ['Slijtklasse', p.klasse], ['Formaat plank', p.formaat],
-      ['Inhoud per pak', m2(p.pak)], ['Waterbestendig', p.water ? 'Ja' : 'Nee'], ['Vloerverwarming', 'Geschikt']
-    ].map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join('');
+      ['Inhoud per pak', m2(p.pak)], ['Waterbestendig', p.water ? 'Ja' : 'Nee']
+    ].map(([a, b]) => `<div><dt>${a}</dt><dd>${esc(b)}</dd></div>`).join('');
 
     const calc = () => {
       // Elke maat moet tussen 0 en 100 m liggen; anders geen berekening.
@@ -252,7 +254,7 @@
         const p = byId(i.id);
         return `<div class="cart-line" data-id="${p.id}">
           <img src="${img(p)}" alt="">
-          <div><h3>${p.naam}</h3><div class="meta">${meta(p, i)}</div>
+          <div><h3>${esc(p.naam)}</h3><div class="meta">${meta(p, i)}</div>
             <div class="qty"><button type="button" data-d="-1" aria-label="Minder">−</button><input type="number" min="1" max="${MAX_PAKKEN}" step="1" value="${i.pakken}" aria-label="Aantal pakken"><button type="button" data-d="1" aria-label="Meer">+</button></div>
             <button type="button" class="remove">Verwijderen</button></div>
           <div class="line-total">${eur(i.pakken * p.pak * p.prijs)}</div></div>`;
@@ -324,7 +326,12 @@
       try {
         const ctrl = new AbortController(); setTimeout(() => ctrl.abort(), 15000);
         const r = await fetch('bestelling.php', { signal: ctrl.signal, method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ naam: f.get('naam'), email: f.get('email'), tekst }) });
+          body: JSON.stringify({
+            naam: f.get('naam'), email: f.get('email'), telefoon: f.get('telefoon'),
+            adres: `${f.get('adres')}, ${f.get('postcode')} ${f.get('plaats')}`,
+            regels: t.items.map((i) => ({ id: i.id, pakken: i.pakken })),
+            totaal: Math.round(t.totaal * 100) / 100, tekst
+          }) });
         ok = r.ok && (await r.json()).ok === true;
       } catch (err) { ok = false; }
       const mailto = `mailto:${D.email}?subject=${encodeURIComponent('Bestelaanvraag laminaat - ' + f.get('naam'))}&body=${encodeURIComponent(tekst)}`;

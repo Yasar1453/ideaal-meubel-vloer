@@ -8,17 +8,17 @@ Wat op de site al geregeld is en wat Ideaal zelf moet doen. Doel: gevonden worde
 - Kennisbank met artikelen die vragen direct beantwoorden, plus veelgestelde vragen.
 - Gestructureerde data: bedrijf, product met prijs per m², artikel, FAQ en kruimelpad.
 - `sitemap.xml`, `robots.txt` (AI-crawlers expliciet toegestaan) en `llms.txt` (samenvatting voor AI).
-- Na elke wijziging in producten of artikelen: `python3 build.py` draaien.
+- Producten wijzigen gaat via het beheerportaal (`/beheer/`); de pagina's worden dan vanzelf opnieuw gemaakt. Na een wijziging in artikelen: `php bouw.php` draaien.
 
 ## Nodig van Ideaal (belangrijkste eerst)
 
-1. **Eigen domein** (bijv. ideaalmeubelenvloer.nl). Daarna `BASE` in `build.py` aanpassen en opnieuw bouwen.
-2. **Adres en openingstijden.** Zonder adres verschijnt de winkel niet bij "laminaat winkel in de buurt". Dit is de grootste stap voor lokale vindbaarheid.
-3. **Echte prijzen, producten en e-mailadres** (nu voorbeeldwaarden in `js/data.js`).
+1. **Eigen domein.** ideaalmeubel.nl wijst nu naar een Shopify-winkel die niet actief is ("Store unavailable"). Na de verhuizing `website` in `data/winkel.json` aanpassen en `php bouw.php` draaien.
+2. ~~Adres en openingstijden~~ Gedaan: Jan Evertsenstraat 10H, 1056 EC Amsterdam, tijden van Google Maps (31-10-2026). Staan op de site en in de gegevens voor Google en AI.
+3. **Echte prijzen, producten en e-mailadres** (nu voorbeeldwaarden; aanpassen in het beheerportaal). Let op: ideaalmeubel.nl heeft geen mailserver, dus info@ideaalmeubel.nl werkt nu niet.
 
 ## Backlinks en vermeldingen (door Ideaal zelf aan te maken)
 
-AI-assistenten en Google vertrouwen een bedrijf meer als dezelfde naam, hetzelfde adres en hetzelfde telefoonnummer op veel plekken staan. Gebruik overal exact: **Ideaal Meubel & Vloer**, hetzelfde adres en **020-7526672**, met link naar de website.
+AI-assistenten en Google vertrouwen een bedrijf meer als dezelfde naam, hetzelfde adres en hetzelfde telefoonnummer op veel plekken staan. Gebruik overal exact: **Ideaal Meubel & Vloer**, **Jan Evertsenstraat 10H, 1056 EC Amsterdam** en **020-7526672**, met link naar de website.
 
 | Plek | Waarom | Prioriteit |
 |---|---|---|

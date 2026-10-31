@@ -1,42 +1,55 @@
 # Zoekmachines en AI-assistenten zijn welkom.
 User-agent: GPTBot
 Allow: /
+Disallow: /beheer/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /beheer/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /beheer/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /beheer/
 
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /beheer/
 
 User-agent: Claude-User
 Allow: /
+Disallow: /beheer/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /beheer/
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /beheer/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /beheer/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /beheer/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /beheer/
 
 User-agent: Googlebot
 Allow: /
+Disallow: /beheer/
 
 User-agent: *
 Allow: /
 Disallow: /bestelling.php
+Disallow: /beheer/
 
 Sitemap: https://yasar1453.github.io/ideaal-meubel-vloer/sitemap.xml
